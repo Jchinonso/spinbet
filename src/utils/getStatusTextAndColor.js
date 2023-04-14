@@ -7,19 +7,19 @@ export const getStatusTextAndColor = (node) => {
   switch (node?.status?.type) {
     case "finished":
       statusText = "FT";
-      textColor = "text-green-500";
+      textColor = "rgb(34 197 94)";
       break;
     case "inprogress":
       statusText = "Live";
-      textColor = "text-yellow-500";
+      textColor = "rgb(234 179 8)";
       break;
     case "notstarted":
       statusText = formatDate(node.timestamp);
-      textColor = "text-gray-300";
+      textColor = "rgb(209 213 219)";
       break;
     default:
       statusText = "Canceled";
-      textColor = "text-red-500";
+      textColor = "rgb(239 68 68)";
   }
 
   return { statusText, textColor };

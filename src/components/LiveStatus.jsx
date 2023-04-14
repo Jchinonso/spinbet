@@ -4,9 +4,7 @@ import { getStatusTextAndColor } from "@/utils/getStatusTextAndColor";
 
 const LiveStatus = ({ node }) => {
   const { statusText, textColor } = getStatusTextAndColor(node);
-
-  const spanClasses = classNames("text-sm", textColor, "block", "mb-3");
-  return <span className={spanClasses}>{statusText}</span>;
+  return <span className="text-sm block mb-3" style={{color: textColor}}>{statusText}</span>;
 };
 
 export default React.memo(LiveStatus);
