@@ -16,7 +16,7 @@ describe('LiveStatus', () => {
     const { getByText } = render(<LiveStatus node={node} />);
     expect(getStatusTextAndColor).toHaveBeenCalledWith(node);
     expect(getByText('Sample Status')).toBeInTheDocument();
-    expect(getByText('Sample Status')).toHaveClass('text-green-500');
+    expect(getByText('Sample Status')).toHaveClass('text-sm block mb-3 uppercase');
   });
 });
 
