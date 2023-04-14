@@ -1,6 +1,7 @@
 import React from "react";
 import MatchesFilter from "./MatchesFilter";
 import Match from "./Match";
+import { LoadingIndicator } from "./LoadingIndicator";
 
 const MatchesList = ({
   loading,
@@ -11,7 +12,7 @@ const MatchesList = ({
   counts,
   loaderRef,
 }) => {
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingIndicator />;
   if (error) return <p>Error :(</p>;
 
   return (
