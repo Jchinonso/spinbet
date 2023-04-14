@@ -13,7 +13,9 @@ const StatusIndicator = ({ status, liveStatus }) => {
       <CircularProgressbar
         value={progress}
         maxValue={90}
-        text={status !== "canceled" ? liveStatus : ""}
+        text={
+          status === "canceled" || status === "notstarted" ? null : liveStatus
+        }
         strokeWidth={8}
         styles={buildStyles({
           strokeLinecap: "butt",
