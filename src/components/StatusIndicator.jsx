@@ -2,30 +2,11 @@ import React from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
+import { getColor, getProgress } from "@/utils/statusUtils";
+
 const StatusIndicator = ({ status, liveStatus }) => {
-  const getProgress = () => {
-    if (status === "inprogress") {
-      if (liveStatus === "HT") {
-        return 45;
-      }
-      return Math.min(90, parseInt(liveStatus, 10));
-    } else if (status === "finished") {
-      return 90;
-    } else {
-      return 0;
-    }
-  };
-
-  const getColor = () => {
-    if (status === "finished" || status === "inprogress") {
-      return "green";
-    } else {
-      return "gray";
-    }
-  };
-
-  const progress = getProgress();
-  const color = getColor();
+  const progress = getProgress(status, liveStatus);
+  const color = getColor(status);
 
   return (
     <div className="w-10 h-10">
@@ -36,7 +17,7 @@ const StatusIndicator = ({ status, liveStatus }) => {
         strokeWidth={8}
         styles={buildStyles({
           strokeLinecap: "butt",
-          textSize: "2.5rem", // Increase text size
+          textSize: "2.5rem",
           textColor: "white",
           pathColor: color,
           trailColor:
