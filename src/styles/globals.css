@@ -35,9 +35,28 @@ body {
   scrollbar-width: none; /* For Firefox */
 }
 
+
+@media (min-width: 1200px) {
+  .truncate-18-lg {
+    max-width: 20ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
 @media (min-width: 768px) {
   .md-truncate-8 {
     max-width: 8ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 767px) {
+  .truncate-10-sm {
+    max-width: 12ch;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
