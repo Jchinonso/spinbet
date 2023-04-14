@@ -5,15 +5,7 @@ import { getStatusTextAndColor } from "@/utils/getStatusTextAndColor";
 const LiveStatus = ({ node }) => {
   const { statusText, textColor } = getStatusTextAndColor(node);
 
-  const spanClasses = classNames(
-    "text-sm",
-    textColor,
-    "block",
-    "mb-3"
-  );
-
-  console.log(spanClasses, "====")
-
+  const spanClasses = classNames("text-sm", textColor, "block", "mb-3");
   return <span className={spanClasses}>{statusText}</span>;
 };
 
