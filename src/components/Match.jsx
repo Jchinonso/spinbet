@@ -1,17 +1,19 @@
-import React from "react";
-import LiveStatus from "./LiveStatus";
-import StatusIndicator from "./StatusIndicator";
-import TeamName from "./TeamName";
+import React from 'react';
+import LiveStatus from './LiveStatus';
+import StatusIndicator from './StatusIndicator';
+import TeamName from './TeamName';
 
-const Match = ({ node, testId  }) => {
+const Match = ({ node, testId }) => {
   return (
     <li
       key={node.id}
       data-testid={testId}
       className="border rounded-lg p-4 bg-gray-700 shadow-md hover:shadow-lg transition-shadow duration-300 text-white flex flex-col items-center"
-      style={{ minHeight: "200px" }}
+      style={{ minHeight: '200px' }}
     >
-      <span className="text-sm text-gray-300 block mb-1 uppercase">{node?.country}</span>
+      <span className="text-sm text-gray-300 block mb-1 uppercase">
+        {node?.country}
+      </span>
       <span className="text-lg text-gray-300 block mb-3 font-bold">
         {node?.competition}
       </span>

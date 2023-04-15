@@ -2,29 +2,29 @@ export const mockMatchListData = {
   matches: {
     edges: [
       {
-        cursor: 'Y3Vyc29yLTU=',
+        cursor: 'Y3Vyc29yLTg=',
         node: {
-          id: 'hbahiij',
-          name: 'LKS Nieciecza - Gornik Leczna',
-          competition: 'Ekstraklasa',
-          country: 'Poland',
-          timestamp: 1470490200,
+          id: 'hadhefg',
+          name: 'IF Elfsborg - BK Häcken',
+          competition: 'Allsvenskan',
+          country: 'Sweden',
+          timestamp: 1470576600,
           status: {
-            type: 'finished',
+            type: 'inprogress',
           },
           homeScore: {
             current: 2,
           },
           awayScore: {
-            current: 1,
+            current: 3,
           },
           homeTeam: {
-            name: 'LKS Nieciecza',
+            name: 'IF Elfsborg',
           },
           awayTeam: {
-            name: 'Gornik Leczna',
+            name: 'BK Häcken',
           },
-          liveStatus: 'FT',
+          liveStatus: '45+',
         },
       },
       {
@@ -55,22 +55,64 @@ export const mockMatchListData = {
       },
     ],
     pageInfo: {
-      hasNextPage: true,
+      hasNextPage: false,
+      endCursor: 'Y3Vyc29yLTY=',
       matchCounts: {
-        all: 179,
-        result: 93,
-        live: 18,
-        upcoming: 65,
+        all: 2,
+        result: 2,
+        live: 0,
+        upcoming: 0,
       },
     },
-    pageCount: 36,
+    pageCount: 1,
   },
 };
-
 
 export const mockCounts = {
   ALL: 3,
   RESULT: 1,
   LIVE: 1,
   UPCOMING: 1,
+};
+
+const resultMatches = mockMatchListData.matches.edges.filter(
+  match => match.node.status.type === 'finished'
+);
+
+const liveMatches = mockMatchListData.matches.edges.filter(
+  match => match.node.status.type === 'inprogress'
+);
+
+export const resultMockMatchListData = {
+  matches: {
+    edges: resultMatches,
+    pageInfo: {
+      hasNextPage: false,
+      endCursor: 'Y3Vyc29yLTY=',
+      matchCounts: {
+        all: 2,
+        result: 2,
+        live: 0,
+        upcoming: 0,
+      },
+    },
+    pageCount: 1,
+  },
+};
+
+export const liveMockMatchListData = {
+  matches: {
+    edges: liveMatches,
+    pageInfo: {
+      hasNextPage: false,
+      endCursor: 'Y3Vyc29yLTY=',
+      matchCounts: {
+        all: 2,
+        result: 2,
+        live: 0,
+        upcoming: 0,
+      },
+    },
+    pageCount: 1,
+  },
 };

@@ -1,9 +1,11 @@
 import React from 'react';
 import { render, screen, fireEvent, within } from '@testing-library/react';
 import MatchesList from './MatchesList';
-import { mockMatchListData, mockCounts } from '@/__mocks__/mockMatchListData';
+import { mockMatchListData, mockCounts, liveMockMatchListData } from '@/__mocks__/mockMatchListData';
+
 
 describe('MatchesList', () => {
+
   it('renders loading indicator when loading', () => {
     render(
       <MatchesList
@@ -143,7 +145,7 @@ describe('MatchesList', () => {
       }
     });
     expect(totalLiveStatusCount).toEqual(
-      mockMatchListData.matches.edges.length
+      liveMockMatchListData.matches.edges.length
     );
   });
 

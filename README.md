@@ -8,6 +8,7 @@ This project is a web application built using Next.js, Apollo-client, React, and
 - Apollo-client
 - React
 - GraphQL
+- Tailwind Css
 
 ## Testing
 
