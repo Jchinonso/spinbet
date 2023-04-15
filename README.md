@@ -17,6 +17,9 @@ The project uses the following testing libraries:
 - react-testing-library
 - Jest
 
+
+ Run The tests with `yarn test` or  `npm run test`
+
 ## Getting Started
 
 ### Running Locally
