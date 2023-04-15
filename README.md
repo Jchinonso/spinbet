@@ -1,4 +1,4 @@
-# Project Name
+# Spinbet
 
 This project is a web application built using Next.js, Apollo-client, React, and GraphQL.
 
