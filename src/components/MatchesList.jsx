@@ -1,7 +1,7 @@
-import React from "react";
-import MatchesFilter from "./MatchesFilter";
-import Match from "./Match";
-import { LoadingIndicator } from "./LoadingIndicator";
+import React from 'react';
+import MatchesFilter from './MatchesFilter';
+import Match from './Match';
+import { LoadingIndicator } from './LoadingIndicator';
 
 const MatchesList = ({
   loading,
@@ -21,11 +21,11 @@ const MatchesList = ({
       <MatchesFilter filter={filter} setFilter={setFilter} counts={counts} />
       <div
         className="overflow-auto hide-scrollbar bg-gray-700 rounded-lg shadow"
-        style={{ maxHeight: "calc(100vh - 12rem)", marginBottom: "20px" }}
+        style={{ maxHeight: 'calc(100vh - 12rem)', marginBottom: '20px' }}
       >
         <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-          {data.matches.edges.map(({ node }) => (
-            <Match key={node.id} node={node} />
+          {data.matches.edges.map(({ node }, index) => (
+            <Match key={node.id} node={node} testId={`match-${index}`}/>
           ))}
         </ul>
       </div>

@@ -37,6 +37,7 @@ The application is also deployed online at [https://spinbet.vercel.app/](https:/
 The GraphQL API for this application is accessible at the following URLs:
 
 - Local: [http://localhost:3000/api/graphql](http://localhost:3000/api/graphql)
+- Online: Replace this with the online GraphQL API URL if different from the local one.
 
 ## Contributing
 

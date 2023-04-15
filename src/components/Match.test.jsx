@@ -20,7 +20,7 @@ describe("Match", () => {
     render(<Match node={sampleNode} />);
   });
 
-  test("renders the Match component with provided data", () => {
+  it("renders the Match component with provided data", () => {
     expect(screen.getByText(sampleNode.country)).toBeInTheDocument();
     expect(screen.getByText(sampleNode.competition)).toBeInTheDocument();
     expect(
@@ -32,7 +32,7 @@ describe("Match", () => {
     expect(screen.getByText(sampleNode.awayTeam.name)).toBeInTheDocument();
   });
 
-  test("renders LiveStatus component with the correct node prop", () => {
+  it("renders LiveStatus component with the correct node prop", () => {
     const liveStatusElement = screen.getByText(sampleNode.liveStatus);
     expect(liveStatusElement).toBeInTheDocument();
   });
