@@ -3,6 +3,7 @@ import React from 'react';
 const TeamName = ({ name }) => {
   return (
     <span
+      data-testid="team-name"
       className={`text-base
       truncate-18-lg
       truncate-10-sm
