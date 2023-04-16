@@ -1,6 +1,6 @@
 import { useState, useRef, useMemo, lazy, Suspense } from 'react';
 import { useQuery } from '@apollo/client';
-import useInfiniteScroll from '../hooks/useInfiniteScroll';
+import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 import MATCHES_QUERY from '@/queries/MatchesQuery';
 import updateMatchesQuery from '@/utils/updateMatchesQuery';
 import { LoadingIndicator } from './LoadingIndicator';
