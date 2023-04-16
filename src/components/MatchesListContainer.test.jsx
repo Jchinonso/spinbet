@@ -1,4 +1,3 @@
-import 'cross-fetch/polyfill';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MockedProvider } from '@apollo/react-testing';
@@ -51,7 +50,7 @@ describe('MatchesListContainer', () => {
   it('should render matches list with filter options', async () => {
     render(
       <MockedProvider mocks={allMocks} addTypename={false}>
-        <MatchesListContainer initialData={null} initialError={null} />
+        <MatchesListContainer />
       </MockedProvider>
     );
 
