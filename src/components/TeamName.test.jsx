@@ -31,14 +31,14 @@ describe('TeamName component', () => {
     );
   });
 
-  test('renders an empty span when name prop is not provided', () => {
+  it('renders an empty span when name prop is not provided', () => {
     render(<TeamName />);
     const spanElement = screen.getByTestId('team-name');
     expect(spanElement).toBeInTheDocument();
     expect(spanElement).toBeEmptyDOMElement();
   });
 
-  test('renders an empty span when name prop is an empty string', () => {
+  it('renders an empty span when name prop is an empty string', () => {
     render(<TeamName name="" />);
     const spanElement = screen.getByTestId('team-name');
     expect(spanElement).toBeInTheDocument();
