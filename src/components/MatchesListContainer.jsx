@@ -1,19 +1,22 @@
 import { useState, useRef, useMemo, lazy, Suspense } from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, gql } from '@apollo/client';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import MATCHES_QUERY from '@/queries/MatchesQuery';
 import updateMatchesQuery from '@/utils/updateMatchesQuery';
-
+import apolloClient from '@/lib/apolloClient';
 import { LoadingIndicator } from './LoadingIndicator';
 
 const LazyMatchesList = lazy(() => import('./MatchesList'));
 
-const MatchesListContainer = () => {
+const MatchesListContainer = ({ initialData, initialError }) => {
   const [filter, setFilter] = useState('ALL');
   const loaderRef = useRef();
   const { loading, error, data, fetchMore } = useQuery(MATCHES_QUERY, {
     variables: { first: 10, filter },
+    initialData,
   });
+
+  const finalError = error || initialError;
 
   const loadMoreMatches = () => {
     fetchMore({
@@ -26,15 +29,15 @@ const MatchesListContainer = () => {
     });
   };
 
-  const counts = useMemo(
-    () => ({
-      ALL: data?.matches?.pageInfo?.matchCounts?.all,
-      RESULT: data?.matches?.pageInfo?.matchCounts?.result,
-      LIVE: data?.matches?.pageInfo?.matchCounts?.live,
-      UPCOMING: data?.matches?.pageInfo?.matchCounts?.upcoming,
-    }),
-    [data]
-  );
+  const counts = useMemo(() => {
+    const pageInfo = data?.matches?.pageInfo;
+    return {
+      ALL: pageInfo?.matchCounts?.all,
+      RESULT: pageInfo?.matchCounts?.result,
+      LIVE: pageInfo?.matchCounts?.live,
+      UPCOMING: pageInfo?.matchCounts?.upcoming,
+    };
+  }, [data]);
 
   useInfiniteScroll(loaderRef, loadMoreMatches);
 
@@ -42,7 +45,7 @@ const MatchesListContainer = () => {
     <Suspense fallback={<LoadingIndicator />}>
       <LazyMatchesList
         loading={loading}
-        error={error}
+        error={finalError}
         data={data}
         filter={filter}
         setFilter={setFilter}
@@ -54,3 +57,28 @@ const MatchesListContainer = () => {
 };
 
 export default MatchesListContainer;
+
+export const getServerSideProps = async () => {
+  const filter = 'ALL';
+  let data;
+  let initialError;
+  try {
+    const response = await apolloClient.query({
+      query: gql`
+        ${MATCHES_QUERY}
+      `,
+      variables: { first: 10, filter },
+    });
+
+    data = response.data;
+  } catch (error) {
+    initialError = error;
+  }
+
+  return {
+    props: {
+      initialData: data,
+      filter,
+    },
+  };
+};
