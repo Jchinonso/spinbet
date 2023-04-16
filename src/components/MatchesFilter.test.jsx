@@ -21,19 +21,19 @@ describe('MatchesFilter', () => {
 
   it('sets active filter correctly', () => {
     const { getByText } = render(
-      <MatchesFilter filter="ALL" setFilter={mockSetFilter} counts={counts} />
+      <MatchesFilter filter="RESULT" setFilter={mockSetFilter} counts={counts} />
     );
-    const allFilterButton = getByText('ALL');
+    const allFilterButton = getByText('RESULT');
     fireEvent.click(allFilterButton);
-    expect(mockSetFilter).toHaveBeenCalledWith('ALL');
+    expect(mockSetFilter).toHaveBeenCalledWith('RESULT');
   });
 
   it('changes filter on button click', () => {
     render(
-      <MatchesFilter filter="ALL" setFilter={mockSetFilter} counts={counts} />
+      <MatchesFilter filter="LIVE" setFilter={mockSetFilter} counts={counts} />
     );
-    const liveFilterButton = screen.getByText('LIVE');
+    const liveFilterButton = screen.getByText('UPCOMING');
     fireEvent.click(liveFilterButton);
-    expect(mockSetFilter).toHaveBeenCalledWith('LIVE');
+    expect(mockSetFilter).toHaveBeenCalledWith('UPCOMING');
   });
 });
